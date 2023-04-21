@@ -6,13 +6,13 @@
 
 ### Using the Published Library
 
-Modify the `package.json` file so that its `"dog"` dependency is non-local:
+Modify the `package.json` file so that its `"@soketi/dog"` dependency is non-local:
 
 ```diff
 {
   "dependencies": {
---  "dog": "workspace:*"
-++  "dog": "next"
+--  "@soketi/dog": "workspace:*"
+++  "@soketi/dog": "next"
   }
 }
 ```
@@ -29,7 +29,7 @@ $ npm run dev
 From the project root (not this directory), using [pnpm](https://pnpm.io/) to install and link packages:
 
 ```sh
-# setup/link pkgs && compile `dog` lib
+# setup/link pkgs && compile `@soketi/dog` lib
 $ pnpm install && pnpm run build
 # change directory & run miniflare
 $ cd example && pnpm run dev

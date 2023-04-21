@@ -2,8 +2,8 @@ import * as utils from './internal/utils';
 import * as ROUTES from './internal/routes';
 import * as HEADERS from './internal/headers';
 
-import type * as DOG from 'dog';
-import type { RequestID, ReplicaID } from 'dog';
+import type * as DOG from '@soketi/dog';
+import type { RequestID, ReplicaID } from '@soketi/dog';
 
 // ---
 

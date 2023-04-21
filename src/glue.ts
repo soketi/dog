@@ -1,7 +1,7 @@
 import * as ROUTES from './internal/routes';
 import * as HEADERS from './internal/headers';
 
-import type * as DOG from 'dog';
+import type * as DOG from '@soketi/dog';
 
 export const identify: typeof DOG.identify = async function (gid, rid, family) {
 	let group = family.parent.get(gid);

@@ -1,4 +1,4 @@
-# DOG [![CI](https://github.com/lukeed/dog/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/lukeed/dog/actions/workflows/ci.yml)
+# DOG [![CI](https://github.com/soketi/dog/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/soketi/dog/actions/workflows/ci.yml)
 
 > Durable Object Groups
 
@@ -9,9 +9,9 @@
 * Includes `Replica`-to-`Replica` (peer-to-peer) communication
 * Ready for strongly-typed, strict TypeScript usage
 * Allows an active connection to:
-    * `broadcast` messages to the entire cluster
-    * `emit` messages to `Replica`-owned connections
-    * send a `whisper` a single connection within the cluster
+  * `broadcast` messages to the entire cluster
+  * `emit` messages to `Replica`-owned connections
+  * send a `whisper` a single connection within the cluster
 
 ## Overview
 
@@ -27,20 +27,18 @@ DOG includes convenience methods that allow a `Replica` to directly communicate 
 
 Please see [Usage](#usage), the [API](#api) docs, and the [example application](/example/worker) for further information!
 
-
 ## Install
 
 ```sh
-$ npm install dog
+npm install @soketi/dog
 ```
-
 
 ## Usage
 
 > Refer to the [`/example`](/example) for a complete Chat Room application.
 
 ```ts
-import { identify, Group, Replica } from 'dog';
+import { identify, Group, Replica } from '@soketi/dog';
 
 // deployed as `POOL` binding
 export class Pool extends Group {
@@ -136,12 +134,11 @@ export default {
 
 The utility function to identify a `Replica` to be used and, if necessary, will create a new `Replica` if none are available. Returns the `Replica` stub directly.
 
-
 ### `Group`
 
 > **Note:** Refer to the [TypeScript definitions](/index.d.ts#L116) for more information.
 
-***Required:***
+Required:
 
 * `limit: number` – the maximum number of active connections a `Replica` can handle
 * `link(env: Bindings): { self, child }` – define the relationships between this `Group` and its `Replica` child class
@@ -152,16 +149,15 @@ When targeting an existing `Replica` instance, the Group verifies that the `Repl
 
 The number of active connections within each `Replica` instance is automatically tracked and shared between the `Replica` and its `Group` parent. The `Replica`'s count is decremented when the connection is closed. This means that when a `Replica` works with WebSockets, open connections continue to reserve `Replica` quota until closed. Non-upgraded HTTP connections close and decrement the `Replica` count as soon as a `Response` is returned.
 
-> **Important:** *Do not* define your own `fetch()` method! <br>Doing so requires that `super.fetch()` be called appropriately, otherwise the entire cluster's inter-communication will fail.
+> **Important:** _Do not_ define your own `fetch()` method! Doing so requires that `super.fetch()` be called appropriately, otherwise the entire cluster's inter-communication will fail.
 
 You may attach any additional state and/or methods to your `Group` class extension.
-
 
 ### `Replica`
 
 > **Note:** Refer to the [TypeScript definitions](/index.d.ts#60) for more information.
 
-***Required:***
+Required:
 
 * `link(env: Bindings): { self, child }` – define the relationships between this `Replica` and its `Group` parent class
 * `receive(req: Request): Promise<Response> | Response` – a user-supplied method to handle an incoming Request
@@ -192,7 +188,7 @@ If you'd like to remain in the HTTP protocol, then you can treat `receive()` as 
 Internally, a [`Socket` interface](/index.d.ts#23) is instantiated and passed to WebSocket event listeners that you chose to define. For example, to handle incoming messages or to react to a new connection, your `Replica` class may including the following:
 
 ```js
-import { Replica } from 'dog';
+import { Replica } from '@soketi/dog';
 
 export class Counter extends Replica {
   #counts = new Map<string, number>;
@@ -253,7 +249,7 @@ In order for a `Replica` to hear gossip, it must define an `ongossip` method han
 Returning to the `Counter` example, suppose the `Counter` objects needs to coordinate with one another to determine a leaderboard. Refreshing this leaderboard could be done through a new `refresh:leaderboard` message, for example:
 
 ```js
-import { Replica } from 'dog';
+import { Replica } from '@soketi/dog';
 
 export class Counter extends Replica {
   #counts = new Map<string, number>;
@@ -299,7 +295,6 @@ export class Counter extends Replica {
   // ...
 }
 ```
-
 
 ## License
 

@@ -1,4 +1,4 @@
-import { Group } from 'dog';
+import { Group } from '@soketi/dog';
 import type { Bindings } from './types';
 
 export class Lobby extends Group<Bindings> {

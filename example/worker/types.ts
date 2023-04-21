@@ -1,4 +1,4 @@
-import type { Group, Replica } from 'dog';
+import type { Group, Replica } from '@soketi/dog';
 
 // TODO: Remove the intersection types?
 export interface Bindings extends ModuleWorker.Bindings {

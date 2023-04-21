@@ -1,7 +1,7 @@
 // @ts-ignore - inline the HTML, via build
 import HTML from '../public/index.html';
 
-import * as dog from 'dog';
+import * as dog from '@soketi/dog';
 import type { Bindings } from './types';
 
 // export the custom DO classes

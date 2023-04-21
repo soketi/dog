@@ -1,6 +1,6 @@
-import { Replica } from 'dog';
+import { Replica } from '@soketi/dog';
 import type { Bindings } from './types';
-import type { Socket, Gossip } from 'dog';
+import type { Socket, Gossip } from '@soketi/dog';
 
 type Message = {
 	uid: string;

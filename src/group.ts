@@ -2,8 +2,8 @@ import * as HEADERS from './internal/headers';
 import * as ROUTES from './internal/routes';
 import * as utils from './internal/utils';
 
-import type * as DOG from 'dog';
-import type { RequestID, ReplicaID } from 'dog';
+import type * as DOG from '@soketi/dog';
+import type { RequestID, ReplicaID } from '@soketi/dog';
 
 // NOTE: Private
 type LiveCount = number;

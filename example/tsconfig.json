@@ -2,7 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "dog": ["node_modules/dog/*"]
+      "@soketi/dog": [
+        "node_modules/@soketi/dog/*"
+      ]
     }
   },
   "include": [
